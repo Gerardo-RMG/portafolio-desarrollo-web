@@ -1,0 +1,689 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primary:      #8b1538;
+    --primary-dark: #6b1029;
+    --primary-light:#fdf2f5;
+    --accent:       #c0392b;
+    --bg:           #f0f4f8;
+    --card:         #ffffff;
+    --text:         #1a202c;
+    --text-muted:   #718096;
+    --border:       #e2e8f0;
+    --success:      #2563eb;
+    --success-dark: #1d4ed8;
+    --warning:      #d97706;
+    --danger:       #dc2626;
+    --shadow-sm:    0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.05);
+    --shadow-md:    0 4px 16px rgba(0,0,0,.10), 0 2px 6px rgba(0,0,0,.06);
+    --shadow-lg:    0 10px 30px rgba(0,0,0,.12), 0 4px 10px rgba(0,0,0,.07);
+    --radius:       12px;
+    --radius-sm:    8px;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    background: var(--bg);
+    min-height: 100vh;
+    padding-bottom: 64px;
+    color: var(--text);
+}
+
+/* ══════════════════════════════════
+   ENCABEZADO
+══════════════════════════════════ */
+#encabezado {
+    background: linear-gradient(135deg, var(--primary) 0%, #a91d46 60%, var(--accent) 100%);
+    color: #fff;
+    text-align: center;
+    padding: 22px 40px;
+    box-shadow: 0 2px 12px rgba(139,21,56,.35);
+    position: relative;
+    overflow: hidden;
+}
+
+#encabezado::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 160px; height: 160px;
+    background: rgba(255,255,255,.06);
+    border-radius: 50%;
+}
+
+#encabezado::after {
+    content: '';
+    position: absolute;
+    bottom: -50px; left: 60px;
+    width: 200px; height: 200px;
+    background: rgba(255,255,255,.04);
+    border-radius: 50%;
+}
+
+#encabezado h1 {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 1px 4px rgba(0,0,0,.2);
+}
+
+/* ══════════════════════════════════
+   PIE DE PÁGINA
+══════════════════════════════════ */
+#pie_pagina {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    color: rgba(255,255,255,.9);
+    text-align: center;
+    padding: 14px 40px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    position: fixed;
+    bottom: 0; left: 0;
+    width: 100%;
+    box-shadow: 0 -2px 10px rgba(0,0,0,.15);
+}
+
+/* ══════════════════════════════════
+   LAYOUT PRINCIPAL
+══════════════════════════════════ */
+#contenido {
+    display: flex;
+    flex-direction: row;
+    gap: 28px;
+    padding: 32px 40px;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ══════════════════════════════════
+   FORMULARIO
+══════════════════════════════════ */
+#form_registro {
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    width: 260px;
+    flex-shrink: 0;
+    overflow: hidden;
+    border: 1px solid var(--border);
+}
+
+#form_registro h2 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(135deg, var(--primary), #a91d46);
+    padding: 14px 20px;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+}
+
+#form_registro form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 20px;
+}
+
+#form_registro input[type="text"] {
+    padding: 10px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-family: inherit;
+    background: #fafafa;
+    color: var(--text);
+    outline: none;
+    width: 100%;
+    transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+#form_registro input[type="text"]:focus {
+    border-color: var(--primary);
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(139,21,56,.10);
+}
+
+#form_registro input[type="text"]::placeholder {
+    color: #a0aec0;
+    font-size: 13px;
+}
+
+#form_registro input[type="submit"] {
+    padding: 11px;
+    background: linear-gradient(135deg, var(--success), var(--success-dark));
+    color: #fff;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    margin-top: 4px;
+    letter-spacing: 0.3px;
+    transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(37,99,235,.30);
+}
+
+#form_registro input[type="submit"]:hover {
+    opacity: 0.92;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(37,99,235,.35);
+}
+
+#form_registro input[type="submit"]:active {
+    transform: translateY(0);
+}
+
+/* ══════════════════════════════════
+   TABLA
+══════════════════════════════════ */
+#tabla_wrapper {
+    flex: 1;
+    overflow-x: auto;
+    min-width: 0;
+}
+
+table {
+    border-collapse: collapse;
+    background: var(--card);
+    width: 100%;
+    font-size: 14px;
+    box-shadow: var(--shadow-md);
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--border);
+}
+
+caption {
+    background: linear-gradient(135deg, var(--primary), #a91d46);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 16px;
+    text-align: center;
+    letter-spacing: 0.6px;
+    text-shadow: 0 1px 3px rgba(0,0,0,.2);
+}
+
+table thead {
+    background: var(--primary-light);
+}
+
+table th {
+    background: linear-gradient(180deg, #9b1a3f 0%, var(--primary) 100%);
+    color: #fff;
+    padding: 12px 18px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    white-space: nowrap;
+}
+
+table th:last-child {
+    text-align: center;
+}
+
+table td {
+    padding: 12px 18px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+    vertical-align: middle;
+    font-size: 14px;
+}
+
+table td:last-child {
+    text-align: center;
+    white-space: nowrap;
+}
+
+table tbody tr {
+    transition: background 0.15s;
+}
+
+table tbody tr:hover td {
+    background: var(--primary-light);
+}
+
+table tbody tr:nth-child(even) td {
+    background: #fafbfc;
+}
+
+table tbody tr:nth-child(even):hover td {
+    background: var(--primary-light);
+}
+
+table tr:last-child td {
+    border-bottom: none;
+}
+
+/* ══════════════════════════════════
+   BOTONES DE LA TABLA
+══════════════════════════════════ */
+table form {
+    margin: 0;
+    display: inline-block;
+}
+
+table input[type="submit"] {
+    padding: 5px 14px;
+    border: none;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+table input[type="submit"]:hover {
+    opacity: 0.88;
+    transform: translateY(-1px);
+}
+
+table input[type="submit"]:active {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.btn-editar {
+    background: linear-gradient(135deg, #f59e0b, var(--warning));
+    color: #fff;
+    box-shadow: 0 2px 6px rgba(217,119,6,.30);
+    margin-right: 6px;
+}
+
+.btn-eliminar {
+    background: linear-gradient(135deg, #ef4444, var(--danger));
+    color: #fff;
+    box-shadow: 0 2px 6px rgba(220,38,38,.30);
+}
+
+/* ══════════════════════════════════
+   SESSION BAR (encabezado)
+══════════════════════════════════ */
+#session_bar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 14px;
+    font-size: 13px;
+    color: rgba(255,255,255,.88);
+    position: relative;
+    z-index: 1;
+    margin-top: 8px;
+}
+
+#btn_salir {
+    padding: 5px 14px;
+    background: rgba(255,255,255,.15);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,.35);
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    letter-spacing: 0.4px;
+    transition: background 0.2s, transform 0.15s;
+}
+
+#btn_salir:hover {
+    background: rgba(255,255,255,.28);
+    transform: translateY(-1px);
+}
+
+/* ══════════════════════════════════
+   LOGIN PAGE
+══════════════════════════════════ */
+#login_wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 130px);
+    padding: 32px 20px;
+    background:
+        radial-gradient(ellipse at 68% 0%,   rgba(139,21,56,.09) 0%, transparent 58%),
+        radial-gradient(ellipse at 18% 100%, rgba(192,57,43,.07) 0%, transparent 55%);
+}
+
+#login_card {
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg), 0 0 0 1px rgba(139,21,56,.06);
+    border: 1px solid var(--border);
+    width: 100%;
+    max-width: 410px;
+    overflow: hidden;
+    animation: card-appear 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes card-appear {
+    from { opacity: 0; transform: translateY(20px) scale(0.97); }
+    to   { opacity: 1; transform: translateY(0)    scale(1); }
+}
+
+#login_header {
+    background: linear-gradient(135deg, var(--primary) 0%, #a91d46 60%, var(--accent) 100%);
+    color: #fff;
+    text-align: center;
+    padding: 32px 24px 28px;
+}
+
+#login_header svg {
+    margin-bottom: 12px;
+    opacity: .92;
+}
+
+#login_header h2 {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+
+#login_header p {
+    font-size: 13px;
+    opacity: .78;
+}
+
+#login_card form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 24px 28px 20px;
+}
+
+.login_field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.input_wrapper {
+    position: relative;
+}
+
+.login_field label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: 0.2px;
+}
+
+.input_wrapper input {
+    padding: 11px 14px 11px 40px;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-family: inherit;
+    background: #fafafa;
+    color: var(--text);
+    outline: none;
+    width: 100%;
+    transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+.input_wrapper input:focus {
+    border-color: var(--primary);
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(139,21,56,.10);
+}
+
+.input_wrapper input::placeholder {
+    color: #a0aec0;
+    font-size: 13px;
+}
+
+#login_card input[type="submit"] {
+    padding: 12px;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: #fff;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 15px;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    letter-spacing: 0.4px;
+    margin-top: 4px;
+    transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
+    box-shadow: 0 3px 10px rgba(139,21,56,.30);
+}
+
+#login_card input[type="submit"]:hover {
+    opacity: 0.92;
+    transform: translateY(-1px);
+    box-shadow: 0 5px 16px rgba(139,21,56,.35);
+}
+
+/* Alertas genéricas (error / éxito) */
+.login_alert {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 11px 16px;
+    margin: 16px 28px 0;
+    line-height: 1.4;
+}
+
+.login_alert svg { flex-shrink: 0; margin-top: 1px; }
+
+.login_error {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    color: var(--danger);
+}
+
+.login_exito {
+    background: #f0fdf4;
+    border: 1px solid #86efac;
+    color: #166534;
+}
+
+/* Icono dentro del input */
+.field_icon {
+    position: absolute;
+    left: 13px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    pointer-events: none;
+    transition: color 0.2s;
+}
+
+.input_wrapper:focus-within .field_icon {
+    color: var(--primary);
+}
+
+/* Divisor "o" */
+.auth_divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 12px;
+    color: var(--text-muted);
+    margin: 4px 28px 14px;
+}
+
+.auth_divider::before,
+.auth_divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+}
+
+/* Pie del card (enlace a registro/login) */
+.auth_footer {
+    text-align: center;
+    padding: 0 28px 24px;
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.auth_footer a {
+    color: var(--primary);
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.15s;
+}
+
+.auth_footer a:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+}
+
+/* Badge de estado activo/inactivo */
+.badge_activo {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.badge_activo.on  { background: #dcfce7; color: #166534; }
+.badge_activo.off { background: #fef2f2; color: var(--danger); }
+
+/* ══════════════════════════════════
+   VALIDACIONES DE FORMULARIO
+══════════════════════════════════ */
+
+/* Feedback debajo del input */
+.campo_feedback {
+    font-size: 12px;
+    font-weight: 500;
+    min-height: 16px;
+    padding: 2px 2px 0;
+    transition: color 0.2s;
+}
+.fb_ok    { color: #16a34a; }
+.fb_error { color: var(--danger); }
+.fb_info  { color: var(--text-muted); font-style: italic; }
+
+/* Borde del input según estado del campo padre */
+[data-estado="ok"]       .input_wrapper input {
+    border-color: #22c55e;
+}
+[data-estado="ok"]       .input_wrapper input:focus {
+    border-color: #22c55e;
+    box-shadow: 0 0 0 3px rgba(34,197,94,.12);
+}
+[data-estado="error"]    .input_wrapper input {
+    border-color: var(--danger);
+    box-shadow: 0 0 0 3px rgba(220,38,38,.08);
+}
+[data-estado="checking"] .input_wrapper input {
+    border-color: #94a3b8;
+}
+
+/* Etiqueta "opcional" */
+.campo_opcional {
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--text-muted);
+    margin-left: 4px;
+}
+
+/* ── Barra de fortaleza de contraseña ──── */
+.pwd_strength_wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 6px;
+}
+.pwd_bar_track {
+    flex: 1;
+    height: 5px;
+    background: var(--border);
+    border-radius: 99px;
+    overflow: hidden;
+}
+.pwd_bar_fill {
+    height: 100%;
+    width: 0%;
+    border-radius: 99px;
+    transition: width 0.3s ease, background 0.3s ease;
+}
+.pwd_strength_label {
+    font-size: 11px;
+    font-weight: 700;
+    min-width: 76px;
+    text-align: right;
+    letter-spacing: 0.3px;
+    transition: color 0.3s;
+}
+
+/* ── Lista de requisitos ─────────────────── */
+#pwd_requisitos {
+    flex-direction: column;
+    gap: 5px;
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    margin-top: 6px;
+}
+.req_item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12px;
+    color: #94a3b8;
+    transition: color 0.2s;
+}
+.req_icon {
+    font-weight: 700;
+    width: 14px;
+    text-align: center;
+    flex-shrink: 0;
+}
+.req_ok   { color: #16a34a; }
+.req_fail .req_icon { color: var(--danger); }
+
+/* ── Toggle ver/ocultar contraseña ─── */
+.has_toggle input {
+    padding-right: 42px;
+}
+
+.pwd_toggle {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-muted);
+    padding: 3px;
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+    line-height: 0;
+    transition: color 0.2s;
+}
+
+.pwd_toggle:hover { color: var(--primary); }
+.pwd_toggle:focus-visible { outline: 2px solid rgba(139,21,56,.35); outline-offset: 1px; }

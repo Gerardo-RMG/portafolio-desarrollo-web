@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="6.0" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd">
+    <servlet>
+        <servlet-name>Servlet_Regitros</servlet-name>
+        <servlet-class>controladores.Servlet_Regitros</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Servlet_Regitros</servlet-name>
+        <url-pattern>/Servlet_Regitros</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Servlet_Alumno</servlet-name>
+        <servlet-class>control.Servlet_Alumno</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Servlet_Alumno</servlet-name>
+        <url-pattern>/Servlet_Alumno</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Servlet_Login</servlet-name>
+        <servlet-class>control.Servlet_Login</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Servlet_Login</servlet-name>
+        <url-pattern>/Servlet_Login</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Servlet_Registro</servlet-name>
+        <servlet-class>control.Servlet_Registro</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Servlet_Registro</servlet-name>
+        <url-pattern>/Servlet_Registro</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Servlet_Validar</servlet-name>
+        <servlet-class>control.Servlet_Validar</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Servlet_Validar</servlet-name>
+        <url-pattern>/Servlet_Validar</url-pattern>
+    </servlet-mapping>
+
+    <welcome-file-list>
+        <welcome-file>Servlet_Login</welcome-file>
+    </welcome-file-list>
+</web-app>
