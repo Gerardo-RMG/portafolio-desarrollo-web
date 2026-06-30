@@ -1,0 +1,10 @@
+# Archivos compilados y distribución
+**/build/
+**/dist/
+
+# Configuración privada de NetBeans
+**/nbproject/private/
+
+# Sistema
+.DS_Store
+Thumbs.db

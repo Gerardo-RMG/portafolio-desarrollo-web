@@ -1,0 +1,186 @@
+body 
+{
+    background: linear-gradient(135deg, #e8edf5 0%, #f0f4fb 100%);
+    min-height: 100vh;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+.card 
+{
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.card-header 
+{
+    padding: 1rem 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+.card-header h4,
+.card-header h5 
+{
+    font-size: 1.1rem;
+    letter-spacing: 0.4px;
+}
+
+
+#formHeader 
+{
+    background: linear-gradient(90deg, #1a6fc4 0%, #2d8ef0 100%) !important;
+    border-bottom: 3px solid #0d5aa7;
+}
+
+
+.card-header.bg-secondary 
+{
+    background: linear-gradient(90deg, #3a4a5c 0%, #506070 100%) !important;
+    border-bottom: 3px solid #2a3a4c;
+}
+
+
+.form-control 
+{
+    border-radius: 8px;
+    border: 1.5px solid #c8d4e3;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    font-size: 0.9rem;
+}
+
+.form-control:focus 
+{
+    border-color: #2d8ef0;
+    box-shadow: 0 0 0 3px rgba(45, 142, 240, 0.18);
+}
+
+.form-label 
+{
+    font-size: 0.8rem;
+    color: #4a5568;
+    margin-bottom: 3px;
+}
+
+
+.btn 
+{
+    border-radius: 8px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    transition: transform 0.1s, box-shadow 0.15s;
+}
+
+.btn:active 
+{
+    transform: scale(0.97);
+}
+
+.btn-success 
+{
+    background: linear-gradient(135deg, #22a84b, #28c55a);
+    border: none;
+    box-shadow: 0 2px 6px rgba(34, 168, 75, 0.3);
+}
+
+.btn-success:hover 
+{
+    background: linear-gradient(135deg, #1a9040, #22a84b);
+    box-shadow: 0 4px 10px rgba(34, 168, 75, 0.4);
+}
+
+.btn-warning 
+{
+    background: linear-gradient(135deg, #e8a000, #f5b800);
+    border: none;
+    color: #1a1a1a;
+    box-shadow: 0 2px 6px rgba(232, 160, 0, 0.3);
+}
+
+.btn-warning:hover 
+{
+    background: linear-gradient(135deg, #d09000, #e8a000);
+    color: #1a1a1a;
+}
+
+.btn-danger 
+{
+    background: linear-gradient(135deg, #d63a3a, #e85555);
+    border: none;
+    box-shadow: 0 2px 6px rgba(214, 58, 58, 0.3);
+}
+
+.btn-danger:hover 
+{
+    background: linear-gradient(135deg, #c02a2a, #d63a3a);
+}
+
+.btn-secondary 
+{
+    background: #6c757d;
+    border: none;
+}
+
+
+.table 
+{
+    font-size: 0.9rem;
+    margin-bottom: 0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.table thead th 
+{
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    padding: 0.7rem 0.9rem;
+    border: none;
+}
+
+.table tbody td 
+{
+    vertical-align: middle;
+    padding: 0.65rem 0.9rem;
+    border-color: #e2e8f0;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) > td 
+{
+    background-color: #f8faff;
+}
+
+.table-hover > tbody > tr:hover > td 
+{
+    background-color: #eaf3ff;
+    transition: background-color 0.15s;
+}
+
+
+.table tbody td strong 
+{
+    color: #1a6fc4;
+    font-size: 0.95rem;
+}
+
+
+.shadow 
+{
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+}
+
+
+@media (max-width: 768px) 
+{
+    .container 
+    {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .btn 
+    {
+        font-size: 0.82rem;
+    }
+}
