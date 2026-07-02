@@ -18,7 +18,11 @@ public class Servlet_Login extends HttpServlet {
 
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("usuario") != null) {
-            response.sendRedirect("Servlet_Alumno");
+            if (Boolean.TRUE.equals(session.getAttribute("esAdmin"))) {
+                response.sendRedirect("Servlet_Admin");
+            } else {
+                response.sendRedirect("Servlet_Alumno");
+            }
             return;
         }
         RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
@@ -35,19 +39,35 @@ public class Servlet_Login extends HttpServlet {
         DAOUsuario dao = new DAOUsuario();
         Usuario u = dao.validar(usuario, clave);
 
-        if (u != null && u.isActivo()) {
+        String error = null;
+
+        if (u == null) {
+            error = "Usuario o contraseña incorrectos.";
+        } else if (!u.isCorreoVerificado()) {
+            error = "Debes verificar tu correo electrónico antes de continuar. " +
+                    "Revisa tu bandeja de entrada y haz clic en el enlace de verificación.";
+        } else if ("rechazado".equals(u.getEstado())) {
+            error = "Tu solicitud de registro fue rechazada. " +
+                    "Contacta al administrador para más información.";
+        } else if ("pendiente".equals(u.getEstado())) {
+            error = "Tu solicitud está pendiente de aprobación. " +
+                    "El administrador revisará tu cuenta pronto.";
+        } else {
+            // estado = "activo" → acceso permitido
             HttpSession session = request.getSession(true);
             session.setAttribute("usuario", u.getUsuario());
             session.setAttribute("nombre",  u.getNombre());
-            response.sendRedirect("Servlet_Alumno");
-        } else if (u != null) {
-            request.setAttribute("error", "Tu cuenta está desactivada. Contacta al administrador.");
-            RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
-            rd.forward(request, response);
-        } else {
-            request.setAttribute("error", "Usuario o contraseña incorrectos.");
-            RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
-            rd.forward(request, response);
+            session.setAttribute("esAdmin", u.isEsAdmin());
+            if (u.isEsAdmin()) {
+                response.sendRedirect("Servlet_Admin");
+            } else {
+                response.sendRedirect("Servlet_Alumno");
+            }
+            return;
         }
+
+        request.setAttribute("error", error);
+        RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
+        rd.forward(request, response);
     }
 }

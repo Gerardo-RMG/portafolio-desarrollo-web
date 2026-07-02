@@ -26,17 +26,33 @@
                     <p>Ingresa tus credenciales para continuar</p>
                 </div>
 
-                <% if ("1".equals(request.getParameter("exito"))) { %>
+                <%-- Correo verificado exitosamente --%>
+                <% if ("1".equals(request.getParameter("verificado"))) { %>
                 <div class="login_alert login_exito">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
                          fill="none" stroke="currentColor" stroke-width="2.5"
                          stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="20 6 9 17 4 12"/>
                     </svg>
-                    <span>¡Cuenta creada! Ya puedes iniciar sesión.</span>
+                    <span>¡Correo verificado! Tu solicitud quedó pendiente de aprobación por el administrador.</span>
                 </div>
                 <% } %>
 
+                <%-- Token de verificación inválido --%>
+                <% if ("1".equals(request.getParameter("token_invalido"))) { %>
+                <div class="login_alert login_error">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2"
+                         stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="12" y1="8" x2="12" y2="12"/>
+                        <line x1="12" y1="16" x2="12.01" y2="16"/>
+                    </svg>
+                    <span>El enlace de verificación no es válido o ya fue utilizado.</span>
+                </div>
+                <% } %>
+
+                <%-- Error de login (credenciales, estado pendiente/rechazado, sin verificar) --%>
                 <% if (request.getAttribute("error") != null) { %>
                 <div class="login_alert login_error">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"

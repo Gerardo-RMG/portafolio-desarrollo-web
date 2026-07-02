@@ -1,4 +1,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    boolean registrado    = Boolean.TRUE.equals(request.getAttribute("registrado"));
+    boolean correoEnviado = Boolean.TRUE.equals(request.getAttribute("correoEnviado"));
+    String  urlVerif      = (String) request.getAttribute("urlVerificacion");
+    String  correoDestino = (String) request.getAttribute("correoDestino");
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -24,9 +30,68 @@
                         <line x1="19" y1="8" x2="19" y2="14"/>
                         <line x1="22" y1="11" x2="16" y2="11"/>
                     </svg>
-                    <h2>Crear Cuenta</h2>
-                    <p>Regístrate con tu correo institucional</p>
+                    <h2><%= registrado ? "¡Solicitud enviada!" : "Crear Cuenta" %></h2>
+                    <p><%= registrado ? "Revisa los pasos a continuación" : "Regístrate con tu correo institucional" %></p>
                 </div>
+
+                <% if (registrado) { %>
+                <%-- ── Panel de éxito ─────────────────────────────────────── --%>
+                <div class="registro_ok_panel">
+
+                    <div class="registro_ok_icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
+                             fill="none" stroke="currentColor" stroke-width="2"
+                             stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                    </div>
+
+                    <% if (correoEnviado) { %>
+                    <p class="registro_ok_msg">
+                        Enviamos un enlace de verificación a<br>
+                        <strong><%= correoDestino %></strong>
+                    </p>
+                    <p class="registro_ok_sub">
+                        Abre tu correo y haz clic en el enlace para verificar tu cuenta.
+                        Después, el administrador revisará tu solicitud.
+                    </p>
+                    <% } else { %>
+                    <p class="registro_ok_msg">
+                        Cuenta creada. Verifica tu correo para continuar.
+                    </p>
+                    <p class="registro_ok_sub">
+                        Haz clic en el botón de abajo para verificar tu correo electrónico:
+                    </p>
+                    <a href="<%= urlVerif %>" class="btn_verificar_link">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                             fill="none" stroke="currentColor" stroke-width="2.5"
+                             stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0">
+                            <rect x="2" y="4" width="20" height="16" rx="2"/>
+                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                        </svg>
+                        Verificar mi correo
+                    </a>
+                    <p class="registro_ok_sub" style="margin-top:12px;">
+                        Una vez verificado, el administrador aprobará tu solicitud<br>y podrás iniciar sesión.
+                    </p>
+                    <% } %>
+
+                    <div class="registro_ok_pasos">
+                        <div class="paso"><span class="paso_num paso_done">1</span><span>Registro completado</span></div>
+                        <div class="paso_linea"></div>
+                        <div class="paso"><span class="paso_num <%= correoEnviado ? "" : "paso_done" %>">2</span><span>Verificar correo</span></div>
+                        <div class="paso_linea"></div>
+                        <div class="paso"><span class="paso_num">3</span><span>Aprobación admin</span></div>
+                        <div class="paso_linea"></div>
+                        <div class="paso"><span class="paso_num">4</span><span>Acceso</span></div>
+                    </div>
+
+                    <a href="Servlet_Login" class="link_volver">← Volver al inicio de sesión</a>
+                </div>
+
+                <% } else { %>
+                <%-- ── Formulario de registro ───────────────────────────── --%>
 
                 <% if (request.getAttribute("error") != null) { %>
                 <div class="login_alert login_error">
@@ -182,6 +247,8 @@
                     ¿Ya tienes cuenta? <a href="Servlet_Login">Inicia sesión</a>
                 </div>
 
+                <% } %>
+
             </div>
         </div>
 
@@ -189,6 +256,7 @@
             <p>Base de datos MySQL con JSP &amp; Servlet</p>
         </div>
 
+        <% if (!registrado) { %>
         <script>
         /* ── Ver / ocultar contraseña ────────────────────────── */
         function togglePwd(id, btn) {
@@ -202,7 +270,6 @@
 
         (function () {
 
-            /* ── Estado de cada campo ─────────────────────────── */
             var estados = {};
 
             function setEstado(fieldId, estado, mensaje) {
@@ -219,7 +286,6 @@
                 fb.textContent = mensaje || '';
             }
 
-            /* ── Verificación AJAX ────────────────────────────── */
             function verificar(tipo, params, fieldId, msgExiste) {
                 setEstado(fieldId, 'checking', 'Verificando…');
                 fetch('Servlet_Validar?tipo=' + tipo + '&' + params)
@@ -234,7 +300,6 @@
                     .catch(function() { setEstado(fieldId, '', ''); });
             }
 
-            /* ── Nombre completo (blur en paterno o materno) ──── */
             function checkNombre() {
                 var nombres = document.getElementById('tfNombres').value.trim();
                 var paterno = document.getElementById('tfPaterno').value.trim();
@@ -251,7 +316,6 @@
             document.getElementById('tfPaterno').addEventListener('blur', checkNombre);
             document.getElementById('tfMaterno').addEventListener('blur', checkNombre);
 
-            /* ── Correo ───────────────────────────────────────── */
             document.getElementById('tfCorreo').addEventListener('blur', function () {
                 var val = this.value.trim();
                 if (!val) return;
@@ -262,7 +326,6 @@
                 );
             });
 
-            /* ── Usuario ──────────────────────────────────────── */
             document.getElementById('tfUsuario').addEventListener('blur', function () {
                 var val = this.value.trim();
                 if (!val) return;
@@ -273,7 +336,6 @@
                 );
             });
 
-            /* ── Fortaleza de contraseña ──────────────────────── */
             var REQS = {
                 longitud:  function(p) { return p.length >= 8; },
                 mayuscula: function(p) { return /[A-Z]/.test(p); },
@@ -319,7 +381,6 @@
             });
             document.getElementById('tfClave').addEventListener('input', checkPassword);
 
-            /* ── Confirmar contraseña ─────────────────────────── */
             document.getElementById('tfClave2').addEventListener('blur', function () {
                 var pwd  = document.getElementById('tfClave').value;
                 var pwd2 = this.value;
@@ -331,7 +392,6 @@
                 }
             });
 
-            /* ── Bloquear submit ──────────────────────────────── */
             document.getElementById('formRegistro').addEventListener('submit', function (e) {
                 var tieneError = false;
                 var campos = ['field_nombres', 'field_paterno', 'field_materno',
@@ -339,10 +399,7 @@
                 for (var i = 0; i < campos.length; i++) {
                     if (estados[campos[i]] === 'error') { tieneError = true; break; }
                 }
-                if (tieneError) {
-                    e.preventDefault();
-                    return;
-                }
+                if (tieneError) { e.preventDefault(); return; }
                 var score = estados['pwd_score'] || 0;
                 if (score < 3) {
                     e.preventDefault();
@@ -362,6 +419,7 @@
 
         })();
         </script>
+        <% } %>
 
     </body>
 </html>

@@ -32,6 +32,9 @@
                     <%= session.getAttribute("nombre") != null ? session.getAttribute("nombre") : session.getAttribute("usuario") %>
                     &nbsp;<span style="opacity:.6;font-weight:400;">(@<%= session.getAttribute("usuario") %>)</span>
                 </span>
+                <% if (Boolean.TRUE.equals(session.getAttribute("esAdmin"))) { %>
+                <a href="Servlet_Admin" id="btn_admin">Panel Admin</a>
+                <% } %>
                 <form method="post" action="Servlet_Alumno" style="display:inline;">
                     <input type="hidden" name="accion" value="Salir"/>
                     <button type="submit" id="btn_salir">Cerrar Sesión</button>

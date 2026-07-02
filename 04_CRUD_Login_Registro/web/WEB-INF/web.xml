@@ -45,6 +45,33 @@
         <url-pattern>/Servlet_Validar</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>Servlet_Verificar</servlet-name>
+        <servlet-class>control.Servlet_Verificar</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Servlet_Verificar</servlet-name>
+        <url-pattern>/Servlet_Verificar</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Servlet_Admin</servlet-name>
+        <servlet-class>control.Servlet_Admin</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Servlet_Admin</servlet-name>
+        <url-pattern>/Servlet_Admin</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Servlet_Perfil</servlet-name>
+        <servlet-class>control.Servlet_Perfil</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Servlet_Perfil</servlet-name>
+        <url-pattern>/Servlet_Perfil</url-pattern>
+    </servlet-mapping>
+
     <welcome-file-list>
         <welcome-file>Servlet_Login</welcome-file>
     </welcome-file-list>
